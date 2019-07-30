@@ -9,8 +9,7 @@ os.environ['PATH']  = os.environ['PATH'] + ';' + dir_path + '/x64/Release;' +  d
 import pyopenpose as op
 
 class hand:
-    def __init__(self):        
-
+    def __init__(self):
         params = dict()
         params["model_folder"] = "./models/"
         #params["face"] = True
@@ -28,16 +27,14 @@ class hand:
         self.opWrapper = op.WrapperPython()
         self.opWrapper.configure(params)
         self.opWrapper.start()
-        op.Datum()
-
 
     def detection(self, img):
         datum = op.Datum()
         datum.cvInputData = img
         self.opWrapper.emplaceAndPop([datum])
 
-        #body = str(datum.poseKeypoints)
-        #face = str(datum.faceKeypoints)
+        #body = datum.poseKeypoints
+        #face = datum.faceKeypoints
         left = datum.handKeypoints[0]
         right = datum.handKeypoints[1]
 
@@ -49,36 +46,38 @@ class hand:
         for l in left[0]:
             self.leftX.append(l[0])
             self.leftY.append(l[1])
+
+        self.points=[]
         self.rightX = []
         self.rightY = []
         for r in right[0]:
             self.rightX.append(r[0])
             self.rightY.append(r[1])
-
+            self.points.append(r[0])
+            self.points.append(r[1])
 
         self.left_centerX, self.left_centerY = self.get_center(self.leftX, self.leftY)
         self.right_centerX, self.right_centerY = self.get_center(self.rightX, self.rightY)
-        self.distanceX, self.distanceY = self.get_distance()
+        self.distanceX = abs(self.left_centerX - self.right_centerX)
+        self.distanceY = abs(self.left_centerY - self.right_centerY)
 
         cv2.imshow("Pose and Hand", datum.cvOutputData)
         cv2.waitKey(1)
-        
+                
         return True
 
     def get_point(self):
         return self.leftX, self.leftY, self.rightX, self.rightY
 
     def get_center(self, X, Y):
-        cnt = 0
         x = 0
         y = 0
-
+        cnt = 0
         for i in range(len(X)):
             if X[i] == 0.: continue
             cnt += 1
             x += X[i]
             y += Y[i]
-
         x /= cnt
         y /= cnt
 
@@ -91,7 +90,4 @@ class hand:
         return self.right_centerX, self.right_centerY
 
     def get_distance(self):
-        x = abs(self.left_centerX - self.right_centerX)
-        y = abs(self.left_centerY - self.right_centerY)
-        return x, y
-
+        return self.distanceX, self.distanceY

@@ -49,6 +49,8 @@ def hand_detection(img):
     except Exception as e:
         sys.exit(-1)
 
+    print('TEST')
+
     return leftX, leftY, rightX, rightY
 
 
@@ -72,3 +74,12 @@ def hand_distance(leftX, leftY, rightX, rightY):
     x = abs(leftX - rightX)
     y = abs(leftY - rightY)
     return x, y
+
+
+img = cv2.imread('./test/img.jpg')
+
+leftX, leftY, rightX, rightY = hand_detection(img)
+print(leftX)
+print(leftY)
+print(rightX)
+print(rightY)

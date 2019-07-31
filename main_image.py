@@ -1,7 +1,3 @@
-# from melodyData import data_return
-# from play_melody import *
-# from music_check import *
-
 from model import Net
 from detect import hand_detect
 import torch
@@ -12,7 +8,6 @@ import os
 import midi
 
 if __name__ == "__main__":
-#    midiout = Setting()       #음악 시작하기 위한 세팅
     model=Net().to('cuda')     #모델 할당
     model.load_state_dict(torch.load('model/Net.pth'))  # 학습된 모델 로드
     
@@ -40,7 +35,6 @@ if __name__ == "__main__":
 
         hand_sign = hand_state
         melody = music.to_note(distanceX, distanceY)
-        print(melody)
         if melody == -1:
             continue
         music.sound(hand_sign, melody)

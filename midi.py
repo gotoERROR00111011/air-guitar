@@ -20,20 +20,15 @@ class midi:
         #if distanceX < 0 or distanceX > 100 or distanceY < 0 or distanceY > 100:
         #    return -1
 
-        if distanceX < 0:
-            distanceX = 0
-        elif distanceX > 300:
-            distanceX = 300
-
-        if distanceY < 0:
-            distanceY = 0
-        elif distanceY > 300:
-            distanceY = 300
-
-        minX = 0
+        minX = 100
         maxX = 300
-        minY = 0
-        maxY = 300
+        minY = -150
+        maxY = 150
+        if distanceX < minX: distanceX = minX
+        elif distanceX > maxX: distanceX = maxX
+        if distanceY < minY: distanceY = minY
+        elif distanceY > maxY: distanceY = maxY
+
         min_octave = 0
         max_octave = 2.999
         min_note = 0

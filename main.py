@@ -1,6 +1,6 @@
-from melodyData import data_return
-from play_melody import *
-from music_check import *
+# from melodyData import data_return
+# from play_melody import *
+# from music_check import *
 
 from model import Net
 from detect import hand_detect
@@ -9,6 +9,7 @@ import torch
 import cv2
 import skeleton
 
+import midi
 
 if __name__ == "__main__":
 #    midiout = Setting()       #음악 시작하기 위한 세팅
@@ -16,6 +17,7 @@ if __name__ == "__main__":
     model.load_state_dict(torch.load('model/Net.pth'))  # 학습된 모델 로드
     
     hand = skeleton.hand()
+    music = midi.midi()
 
     video_path = './media/hand_test.avi'    
     cap = cv2.VideoCapture(video_path)
@@ -33,14 +35,16 @@ if __name__ == "__main__":
         rightX, rightY = hand.get_right_center()
         distanceX, distanceY = hand.get_distance()
 
-
         points=torch.FloatTensor(hand.points).view(1,-1).to('cuda')
 
         hand_state=hand_detect(model,points)
 
         print('Hand_state =',hand_state)
 
-        cv2.imwrite('test.jpg',image)
+        hand_sign = hand_state
+        melody = music.to_note(distanceX, distanceY)
+        music.sound(hand_sign, melody)
+
 
         #num=music(10, 10, 0, 15) #music(num1,num2,num3,num4)
         #onOff, melody = data_return(hand_state,num)         # 첫번째 : 음악 끄기 켜기 , 두번째 음색 고르기

@@ -18,7 +18,20 @@ class Net(nn.Module):
             nn.Sigmoid()
         )
     def forward(self,inp):
+        inp=self.avg(inp)
         return self.layer(inp)
+
+    def avg(self,X):
+        for x in X:
+            minX=min(x[::2])
+            minY=min(x[1:2])
+            for i in range(len(x)):
+                if i%2==0:
+                    x[i]-=minX
+                else:
+                    x[i]-=minY
+        return X
+
 
 if __name__ == '__main__':
     t=Net()

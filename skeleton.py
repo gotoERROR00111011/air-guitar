@@ -53,6 +53,7 @@ class hand:
         for r in right[0]:
             self.rightX.append(r[0])
             self.rightY.append(r[1])
+
             self.points.append(r[0])
             self.points.append(r[1])
 
@@ -61,7 +62,9 @@ class hand:
         self.distanceX = abs(self.left_centerX - self.right_centerX)
         self.distanceY = abs(self.left_centerY - self.right_centerY)
 
-        cv2.imshow("Pose and Hand", datum.cvOutputData)
+        img = datum.cvOutputData
+        cv2.rectangle(img, (int(self.right_centerX) + 100, int(self.right_centerY) - 50), (int(self.right_centerX) + 200, int(self.right_centerY) + 50), (0, 0, 255), 2)
+        cv2.imshow("Pose and Hand", img)
         cv2.waitKey(1)
                 
         return True

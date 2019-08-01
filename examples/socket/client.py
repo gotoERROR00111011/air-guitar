@@ -1,10 +1,11 @@
 import cv2
 import io
+import time
 import socket
 import struct
 import pickle
 
-ip = ''
+ip = 'win.cv-net.kro.kr'
 username = ''
 password = ''
 
@@ -32,5 +33,9 @@ while True:
     print("{}: {}".format(img_counter, size))
     client_socket.sendall(struct.pack(">L", size) + data)
     img_counter += 1
+
+    time.sleep(0.2)
+    #cv2.imshow('show', frame)
+    #cv2.waitKey(100)
 
 cam.release()

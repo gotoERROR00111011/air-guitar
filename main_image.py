@@ -16,8 +16,7 @@ if __name__ == "__main__":
 
     path='./test/true/'
 
-    output0=0
-    output1=0
+    
 
     image_list=[path+x for x in os.listdir(path)]
     for image_path in image_list:

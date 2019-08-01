@@ -14,6 +14,10 @@ class hand:
         params["model_folder"] = "./models/"
         #params["face"] = True
         params["hand"] = True
+        params['render_pose']=1
+        #params['model_pose']='COCO'
+        self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        self.out = cv2.VideoWriter('output.avi',self.fourcc, 20.0, (640,360))
 
         self.leftX = []
         self.leftY = []
@@ -65,6 +69,9 @@ class hand:
 
         img = datum.cvOutputData
         self.draw_area(img)
+
+        # write the flipped frame
+        self.out.write(img)
         cv2.imshow("Pose and Hand", img)
         cv2.waitKey(1)
                 

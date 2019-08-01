@@ -14,16 +14,16 @@ if __name__ == "__main__":
     hand = skeleton.hand()
     music = midi.midi()
 
-    video_path = './media/hand_test.avi'    
+    video_path = './media/test.avi'    
     cap = cv2.VideoCapture(video_path)
 
+    
     while True:
         ret, image = cap.read()
-        catch_flag = hand.detection(image)
 
-        if not catch_flag:
-            continue
-        
+        if ret!=True:
+            break;
+        hand.detection(image)
         distanceX, distanceY = hand.get_distance()
 
         points=torch.FloatTensor(hand.points).view(1,-1).to('cuda')
@@ -33,3 +33,5 @@ if __name__ == "__main__":
         hand_sign = hand_state
         melody = music.to_note(distanceX, distanceY)
         music.sound(hand_sign, melody)
+
+    hand.out.release()

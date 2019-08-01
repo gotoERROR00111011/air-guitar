@@ -3,9 +3,8 @@ from detect import hand_detect
 import torch
 
 import cv2
-import skeleton
-
 import midi
+import skeleton
 
 if __name__ == "__main__":
     model=Net().to('cuda')     #모델 할당
@@ -14,24 +13,21 @@ if __name__ == "__main__":
     hand = skeleton.hand()
     music = midi.midi()
 
-    video_path = './media/test.avi'    
+    video_path = './media/test.avi'  
     cap = cv2.VideoCapture(video_path)
-
     
     while True:
         ret, image = cap.read()
+        if ret != True:
+            break
 
-        if ret!=True:
-            break;
         hand.detection(image)
         distanceX, distanceY = hand.get_distance()
 
-        points=torch.FloatTensor(hand.points).view(1,-1).to('cuda')
+        points = torch.FloatTensor(hand.points).view(1,-1).to('cuda')
+        hand_sign = hand_detect(model, points)
 
-        hand_state=hand_detect(model,points)
-
-        hand_sign = hand_state
         melody = music.to_note(distanceX, distanceY)
         music.sound(hand_sign, melody)
 
-    hand.out.release()
+    #hand.out.release()

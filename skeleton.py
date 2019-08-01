@@ -16,8 +16,9 @@ class hand:
         params["hand"] = True
         params['render_pose']=1
         #params['model_pose']='COCO'
-        self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        self.out = cv2.VideoWriter('output.avi',self.fourcc, 20.0, (640,360))
+
+        #self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        #self.out = cv2.VideoWriter('output.avi',self.fourcc, 20.0, (640,360))
 
         self.leftX = []
         self.leftY = []
@@ -43,7 +44,9 @@ class hand:
         left = datum.handKeypoints[0]
         right = datum.handKeypoints[1]
 
-        if sum(left[0])[0] == 0. or sum(right[0])[0] == 0.:
+        if left.shape == () or right.shape == () or sum(left[0])[0] == 0. or sum(right[0])[0] == 0.:
+            cv2.imshow("Pose and Hand", img)
+            cv2.waitKey(1)
             return False
 
         self.leftX = []
@@ -58,7 +61,6 @@ class hand:
         for r in right[0]:
             self.rightX.append(r[0])
             self.rightY.append(r[1])
-
             self.points.append(r[0])
             self.points.append(r[1])
 
@@ -71,7 +73,7 @@ class hand:
         self.draw_area(img)
 
         # write the flipped frame
-        self.out.write(img)
+        #self.out.write(img)
         cv2.imshow("Pose and Hand", img)
         cv2.waitKey(1)
                 

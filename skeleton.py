@@ -45,6 +45,7 @@ class hand:
         right = datum.handKeypoints[1]
 
         if left.shape == () or right.shape == () or sum(left[0])[0] == 0. or sum(right[0])[0] == 0.:
+            img = cv2.flip(img, 1)
             cv2.imshow("Pose and Hand", img)
             cv2.waitKey(1)
             return False

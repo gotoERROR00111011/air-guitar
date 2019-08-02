@@ -74,6 +74,8 @@ class hand:
 
         # write the flipped frame
         #self.out.write(img)
+        
+        img = cv2.flip(img, 1)
         cv2.imshow("Pose and Hand", img)
         cv2.waitKey(1)
                 

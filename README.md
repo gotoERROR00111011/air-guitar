@@ -3,7 +3,6 @@
 [![AirGuitar](http://img.youtube.com/watch?v=RaQGj5DZogk/0.jpg)](https://www.youtube.com/watch?v=RaQGj5DZogk)
 
 [![Youtube](http://img.youtube.com/vi/YiHAZ-QiMNA/0.jpg)](https://youtu.be/YiHAZ-QiMNA)  
-[Youtube](https://www.youtube.com/watch?v=YiHAZ-QiMNA)  
 
 ## Project
 - 2019-07-24 \~ 2019-08-02

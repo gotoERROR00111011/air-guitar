@@ -1,4 +1,5 @@
 # AirGuitar
+[![AirGuitar](http://img.youtube.com/vi/RaQGj5DZogk/0.jpg)](https://www.youtube.com/watch?v=RaQGj5DZogk)
 
 ## Project
 - 2019-07-24 \~ 2019-08-02

@@ -10,6 +10,12 @@
    - 이철민, 동명대학교
    - 하승현, 동명대학교
 
+## Setup
+### Environment
+- [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
+- pytorch
+- OpenCV
+
 ## 개요
 OpenPose를 사용하여 찾아낸 손 관절 정보를 활용하여 악기 없이 연주할 수 있도록 한다.
 

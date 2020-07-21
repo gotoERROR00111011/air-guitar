@@ -1,5 +1,5 @@
 # AirGuitar
-[![AirGuitar](http://img.youtube.com/vi/RaQGj5DZogk/0.jpg)](https://www.youtube.com/watch?v=RaQGj5DZogk)
+[![AirGuitar](http://img.youtube.com/vi/RaQGj5DZogk/0.jpg)](https://www.youtube.com/watch?v=RaQGj5DZogk)    
 [Youtube Link](https://www.youtube.com/watch?v=RaQGj5DZogk)    
 
 ## 개요

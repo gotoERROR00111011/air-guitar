@@ -1,6 +1,6 @@
 # AirGuitar
 [![AirGuitar](http://img.youtube.com/vi/RaQGj5DZogk/0.jpg)](https://www.youtube.com/watch?v=RaQGj5DZogk)    
-[Youtube Link](https://www.youtube.com/watch?v=RaQGj5DZogk)    
+[Youtube](https://www.youtube.com/watch?v=RaQGj5DZogk)    
 
 ## 개요
 OpenPose를 사용하여 찾아낸 손 관절 정보를 활용하여 악기 없이 연주할 수 있도록 한다.

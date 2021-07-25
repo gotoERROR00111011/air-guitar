@@ -48,7 +48,7 @@
 
 ## Background
 
-vFlat의 경우 스마트폰 카메라로 촬영하기 때문에 빛, 그림자 등으로 문제가 생긴다. 또한 정보 대비 용량이 크다. 스캔한 pdf 파일을 후처리 하여 위의 문제를 해결하는 것을 목표로 하는 프로젝트이다.
+[OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose)로 얻은 skeleton 좌표를 활용해 피아노 소리를 내는 프로젝트
 
 <!-- Install-->
 
